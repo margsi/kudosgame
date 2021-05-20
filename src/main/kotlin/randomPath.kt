@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
     val json = File(System.getProperty("user.dir") + "\\resources\\" + "kudos.json").readText()
     var kudos = Gson().fromJson<List<Kudos>>(json)
     var highScore = 0
-    (0..99).forEach {
+    (kudos.indices).forEach {
         val path = findPath(kudos,it)
         if(path.size > highScore){
             println(path.joinToString())
@@ -24,7 +24,11 @@ fun findPath(kudosList: List<Kudos>, startIndex: Int): List<Long> {
         currentKudo = possibleNextSteps[0]
         path.add(currentKudo.id)
         kudos.remove(currentKudo)
-        possibleNextSteps = kudos.filter { it.sender_id == currentKudo!!.person_id }
+        if(currentKudo.person_id!= null) {
+            possibleNextSteps = kudos.filter { it.sender_id == currentKudo!!.person_id }
+        } else {
+            possibleNextSteps = kudos
+        }
     }
     return path
 }

@@ -14,8 +14,8 @@ fun main(args: Array<String>) {
     kudos.forEach { k ->
         if (k.person_id == null) {
             kudos.forEach { other ->
-                if(other.id != k.id) {
-                    g.addEdge((k.id - 1).toInt() , (other.id - 1).toInt(), 1)
+                if (other.id != k.id) {
+                    g.addEdge((k.id - 1).toInt(), (other.id - 1).toInt(), 1)
                 }
             }
         } else {
@@ -30,4 +30,6 @@ fun main(args: Array<String>) {
     print(kudoPath)
 }
 
-inline fun <reified T> Gson.fromJson(json: String) = fromJson<T>(json, object: TypeToken<T>() {}.type)
+
+
+inline fun <reified T> Gson.fromJson(json: String) = fromJson<T>(json, object : TypeToken<T>() {}.type)

@@ -20,12 +20,12 @@ fun main(args: Array<String>) {
             }
         } else {
             groupedBySender[k.person_id]?.forEach { targetKudoPair ->
-                g.addEdge((k.id - 1).toInt(), (targetKudoPair.id - 1).toInt(), 10)
+                g.addEdge((k.id - 1).toInt(), (targetKudoPair.id - 1).toInt(), 1)
             }
         }
     }
     val path = g.longestPath(0)
-    val kudoPath = path.map { kudos[it].id + 1 }
+    val kudoPath = path.map { it + 1 }
     print(path)
     print(kudoPath)
 }

@@ -39,4 +39,3 @@ fun main(args: Array<String>) {
     print(nodes)
 }
 
-inline fun <reified T> Gson.fromJson(json: String) = fromJson<T>(json, object: TypeToken<T>() {}.type)
